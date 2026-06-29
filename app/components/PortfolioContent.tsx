@@ -7,11 +7,9 @@ import Experience from "./Experience";
 import Hero from "./Hero";
 import Contact from "./Contact";
 import Tech from "./Tech";
-import {
-  HeroBackground,
-  MouseGlow,
-  FloatingParticles
-} from "./hero";
+import HeroBackground from "./hero/HeroBackground";
+import MouseGlow from "./hero/MouseGlow";
+import FloatingParticles from "./hero/FloatingParticles";
 
 export default function PortfolioContent() {
 	return (

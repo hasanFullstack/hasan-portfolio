@@ -20,7 +20,7 @@ export default function AboutHeader() {
         variants={item}
         className="text-sm font-medium uppercase tracking-[0.35em] text-cyan-400"
       >
-        {aboutContent.subtitle}
+        {aboutContent.eyebrow}
       </motion.p>
 
       <motion.h2

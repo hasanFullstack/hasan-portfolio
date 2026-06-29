@@ -1,9 +1,7 @@
 "use client";
 
-import {
-  HeroContent,
-  HeroWorkspace,
-} from "./hero";
+import HeroContent from "./hero/HeroContent";
+import HeroWorkspace from "./hero/HeroWorkspace";
 import FloatingParticles from "./hero/FloatingParticles";
 export default function Hero() {
   return (

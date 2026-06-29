@@ -26,7 +26,7 @@ export default function BrowserPreview() {
       transition={{
         duration: 0.8,
         delay: 0.6,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const
       }}
       whileHover={{
         y: -8,

@@ -20,7 +20,7 @@ export default function SectionHeading({
       viewport={{ once: true, amount: 0.3 }}
       transition={{
         duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const
       }}
       className="max-w-3xl"
     >
