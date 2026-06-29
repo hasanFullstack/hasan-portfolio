@@ -21,24 +21,6 @@ export const navLinks = [
 	},
 ];
 
-const services = [
-	{
-		title: "UI/UX Designer",
-		icon: "/backend.webp",
-	},
-	{
-		title: "Full Stack Web Developer",
-		icon: "/web.webp",
-	},
-	{
-		title: "App Developer",
-		icon: "/mobile.webp",
-	},
-	{
-		title: "Software Engineer",
-		icon: "/creator.webp",
-	},
-];
 
 const technologies = [
 	{
@@ -96,44 +78,47 @@ const technologies = [
 ];
 
 const experiences = [
-	{
-		title: "Wordpress Developer & UI/UX Designer",
-		company_name: "A.V.M Auto",
-		icon: "/company/avm.webp",
-		iconBg: "#383E56",
-		date: "2020 -  2023",
-		points: [
-			"Self-Taught Expertise: Gained proficiency in WordPress and UI/UX design through independent learning.",
-			"Collaborative Design: Worked closely with stakeholders to gather feedback and iterate on the portfolio website's interactivity.",
-			"Successful Website Development: Designed and developed a visually appealing and user-friendly portfolio website using WordPress.",
-			"Positive Business Impact: Contributed to +54.25% sales and overall business growth through the improved website."
-		],
-	},
-	{
-		title: "Next.JS Developer",
-		company_name: "Sparkbright Engineering",
-		icon: "/company/sparkbright.webp",
-		iconBg: "#E6DEDD",
-		date: "2023 - 2024",
-		points: [
-			"Self-Taught Expertise: Gained proficiency in React.JS and Next.JS through independent learning.",
-			"Successful Website Development: Designed and developed a visually appealing and user-friendly portfolio website using Next.JS.",
-			"Collaborative Design: Worked closely with stakeholders to gather feedback and iterate on the portfolio website's interactivity."
-		],
-	},
-	{
-		title: "Software Developer",
-		company_name: "Way to Web Pvt. Ltd.",
-		icon: "/company/wtw.jpg",
-		iconBg: "#E6DEDD",
-		date: "2024 - Present",
-		points: [
-			"Developing and maintaining Wordpress Site for A.V.M Auto The Car Body Shop based in Ahmedabad, Gujarat India.",
-			"Analyzing feedbacks and fixing bugs.",
-			"Search Engine Optimization.",
-			"Design Maintainence and hosting maintenance.",
-		],
-	},
+  {
+    title: "Freelance Full Stack & WordPress Developer",
+    company_name: "Self-Employed",
+    icon: "/company/freelance.webp",
+    iconBg: "#2563EB",
+    date: "2022 - Present",
+    points: [
+      "Delivered custom websites, eCommerce stores, and web applications for clients across Canada, Pakistan, India, and the Middle East.",
+      "Developed modern applications using Next.js, React, Node.js, WordPress, WooCommerce, Tailwind CSS, and REST APIs.",
+      "Integrated payment gateways, booking systems, automation workflows, and third-party APIs to meet business requirements.",
+      "Managed complete project lifecycles including UI/UX design, development, deployment, hosting, maintenance, SEO, and ongoing support.",
+    ],
+  },
+{
+    title: "Software Developer",
+    company_name: "WayForward IT",
+    icon: "/company/wayforward.jfif",
+    iconBg: "#0F172A",
+    date: "2024 - Present",
+    points: [
+      "Developing and maintaining enterprise websites and custom business solutions for international clients.",
+      "Working extensively with Next.js, WordPress, WooCommerce, custom APIs, and modern frontend technologies.",
+      "Optimizing website performance, SEO, security, hosting infrastructure, and overall user experience.",
+      "Collaborating with cross-functional teams to deliver scalable, maintainable, and high-quality software solutions.",
+    ],
+  },
+  {
+    title: "Software Developer",
+    company_name: "Octaloop Technologies",
+    icon: "/company/octaloop.png",
+    iconBg: "#111827",
+    date: "2024",
+    points: [
+      "Built and maintained scalable web applications using modern JavaScript frameworks and backend technologies.",
+      "Collaborated with designers, developers, and project managers to deliver production-ready solutions.",
+      "Implemented responsive user interfaces, optimized application performance, and resolved production issues.",
+      "Participated in feature planning, code reviews, testing, and deployment following industry best practices.",
+    ],
+  },
+
+  
 ];
 
 const testimonials = [
@@ -180,155 +165,144 @@ const testimonials = [
 ];
 
 
-const projects :{
-	name: string;
-	description: string;
-	tags: {
-		name: string;
-		color: string;
-	}[];
-	image: string;
-	source_code_link?: string;
-	deploy_link: string;
-	platform: "Netlify" | "Vercel" | "Figma" | "Wordpress" | "Web"
+const projects: {
+  name: string;
+  description: string;
+  tags: {
+    name: string;
+    color: string;
+  }[];
+  image: string;
+  source_code_link?: string;
+  deploy_link: string;
+  platform: "Netlify" | "Vercel" | "Figma" | "Wordpress" | "Web";
 }[] = [
-	{
-		name: "A.V.M Auto Portfolio",
-		description:
-			"A Designed and developed a visually appealing and user-friendly portfolio website using WordPress.",
-		tags: [
-			{
-				name: "wordpress",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "google-translate",
-				color: "green-text-gradient",
-			},
-		],
-		image: "/projectimg/avm.webp",
-		platform: "Wordpress",
-		deploy_link: "https://avmauto.in/",
-	},
-	{
-		name: "Sparkbright Engineering Portfolio",
-		description:
-			" Designed and developed a visually appealing and user-friendly portfolio website using Next.JS.",
-		tags: [
-			{
-				name: "next",
-				color: "red-text-gradient",
-			},
-			{
-				name: "Next UI",
-				color: "orange-text-gradient",
-			},
-			{
-				name: "tailwind",
-				color: "blue-text-gradient",
-			},
-		],
-		image: "/projectimg/sparkbright.png",
-		source_code_link: "https://github.com/omunite215/React-Admin-DashBoard",
-		platform: "Web",
-		deploy_link: "https://sparkbright.in/",
-	},
-	{
-		name: "HooBank",
-		description:
-			"A responsive Bank HomePage showcasing different features such as various payment gateways integration, easy money transfer, advanced security, etc. It has a beautiful interface made using Tailwind CSS and React",
-		tags: [
-			{
-				name: "next",
-				color: "green-text-gradient",
-			},
-			{
-				name: "tailwind",
-				color: "blue-text-gradient",
-			},
-		],
-		image: "/projectimg/hoobank.webp",
-		source_code_link: "https://github.com/omunite215/hoobank",
-		platform: "Vercel",
-		deploy_link: "https://hoobankbyom.netlify.app/",
-	},
-	{
-		name: "MERN Dashboard",
-		description:
-			" Designed and developed a visually appealing and user-friendly Data Analytics Dashboard using MERN",
-		tags: [
-			{
-				name: "react",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "materialui",
-				color: "orange-text-gradient",
-			},
-			{
-				name: "MongoDB",
-				color: "green-text-gradient",
-			},
-			{
-				name: "Express",
-				color: "pink-text-gradient",
-			},
-		],
-		image: "/projectimg/mern.png",
-		source_code_link: "https://github.com/omunite215/Project_MERN-Dashboard",
-		platform: "Web",
-		deploy_link: "https://admin-frontend-r705.onrender.com/",
-	},
-	{
-		name: "Metaverse Web 3.0",
-		description:
-			"A Modern UI/UX Landing Page using Framer Motion and TailwindCSS with a feel and looks of Web 3.0",
-		tags: [
-			{
-				name: "react",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "tailwind",
-				color: "green-text-gradient",
-			},
-			{
-				name: "framer-motion",
-				color: "orange-text-gradient",
-			},
-		],
-		image: "/projectimg/metaverse.png",
-		source_code_link: "https://github.com/omunite215/Project_Metaverse",
-		platform: "Vercel",
-		deploy_link: "https://project-metaverse-beta.vercel.app/",
-	},
-	{
-		name: "Issue Tracker",
-		description:
-			"A Next.JS Full Stack Issue Tracker made using Next.Js, ShadCN UI, Prisma, mySQL with latest features like Next.JS Server Components, and Serverless features.",
-		tags: [
-			{
-				name: "next",
-				color: "blue-text-gradient",
-			},
-			{
-				name: "tailwind",
-				color: "green-text-gradient",
-			},
-			{
-				name: "shadCN",
-				color: "orange-text-gradient",
-			},
-			{
-				name: "mySQL",
-				color: "green-text-gradient",
-			},
-		],
-		image: "/projectimg/issuetracker.png",
-		source_code_link: "https://github.com/omunite215/Project_Issue-Tracker",
-		platform: "Vercel",
-		deploy_link: "https://project-issue-tracker.vercel.app/",
-	},
+  {
+    name: "IntelliStay",
+    description:
+      "An AI-powered MERN hotel management platform featuring intelligent booking recommendations, modern dashboard analytics, authentication, and scalable full-stack architecture.",
+    tags: [
+      {
+        name: "MERN",
+        color: "green-text-gradient",
+      },
+      {
+        name: "AI",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "MongoDB",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/projectimg/Intellistay.png",
+    deploy_link: "https://intellistay-frontend-5m9p.vercel.app/",
+    platform: "Vercel",
+  },
+
+  {
+    name: "Majlis",
+    description:
+      "A Reddit-inspired social platform built with the MERN stack featuring communities, posts, comments, user authentication, and real-time interactions for the Qatar market.",
+    tags: [
+      {
+        name: "MERN",
+        color: "green-text-gradient",
+      },
+      {
+        name: "React",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Node.js",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "MongoDB",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/projectimg/Majlis.png",
+    deploy_link: "https://majlis.com",
+    platform: "Web",
+  },
+
+  {
+    name: "HALIR Perfumery",
+    description:
+      "A modern Next.js eCommerce platform built for a premium perfume brand featuring responsive UI, product catalog, optimized performance, and seamless shopping experience.",
+    tags: [
+      {
+        name: "Next.js",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "TypeScript",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "Tailwind",
+        color: "green-text-gradient",
+      },
+      {
+        name: "eCommerce",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/projectimg/Halir.png",
+    deploy_link: "https://www.halirperfumerypk.com/",
+    platform: "Web",
+  },
+
+  {
+    name: "V-LAW",
+    description:
+      "A professional WordPress website developed for a Canadian law firm, providing legal service information, consultation booking, and an optimized responsive user experience.",
+    tags: [
+      {
+        name: "WordPress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Elementor",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "SEO",
+        color: "green-text-gradient",
+      },
+    ],
+    image: "/projectimg/Vlaw.png",
+    deploy_link: "https://v-law.ca/",
+    platform: "Wordpress",
+  },
+
+  {
+    name: "A.V.M Auto",
+    description:
+      "A complete business website for an automobile service company featuring custom WordPress development, multilingual support, SEO optimization, and lead generation.",
+    tags: [
+      {
+        name: "WordPress",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SEO",
+        color: "green-text-gradient",
+      },
+      {
+        name: "UI/UX",
+        color: "orange-text-gradient",
+      },
+    ],
+    image: "/projectimg/avm.png",
+    deploy_link: "https://avmauto.in/",
+    platform: "Wordpress",
+  }
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export {  technologies, experiences, testimonials, projects };

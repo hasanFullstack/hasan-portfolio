@@ -1,89 +1,68 @@
 "use client";
-import { SectionWrapper } from "@/app/components/HigherOrderComponents";
-import { experiences } from "@/app/constants";
-import { textVariant } from "@/app/utils/motion";
+
 import { motion } from "framer-motion";
-import Image from "next/image";
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 
-type ExperienceCardProps = {
-  experience: (typeof experiences)[0];
-};
+import { SectionWrapper } from "@/app/components/HigherOrderComponents";
 
-const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+import SectionContainer from "./layout/SectionContainer";
+import SectionHeading from "./layout/SectionHeading";
+import BackgroundGlow from "./layout/BackgroundGlow";
+
+import ExperienceCard from "./ExperienceCard";
+
+import { experiences } from "@/app/constants";
+
+function Experience() {
   return (
-    <VerticalTimelineElement
-      visible={true}
-      contentStyle={{
-        background: "#1d1836",
-        color: "#fff",
+    <SectionContainer id="experience" className="relative">
+      <BackgroundGlow />
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <SectionHeading 
+          eyebrow="Career Journey" 
+          title="Work Experience" 
+          description="..." 
+        />
+        <div className="relative mt-24">
+
+          {/* Animated Line */}
+
+          <motion.div
+  initial={{ scaleY: 0 }}
+  animate={{ scaleY: 1 }}
+  transition={{
+    duration: 1.2,
+    ease: "easeOut",
+  }}
+  style={{ originY: 0 }}
+  className="absolute left-5 top-0 h-full w-[2px] rounded-full bg-gradient-to-b from-cyan-400 via-violet-500 to-transparent md:left-1/2 md:-translate-x-1/2"
+/>
+
+          {/* Cards */}
+<div className="space-y-16">
+  {experiences.map((experience, index) => (
+    <motion.div
+      key={index}
+      animate={{
+        y: [-8, 8, -8],
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
-      icon={
-        <div className="flex justify-center items-center w-full h-full">
-          <Image
-            src={experience.icon}
-            width={48}
-            height={48}
-            alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
-          />
-        </div>
-      }
+      transition={{
+        duration: 4 + index * 0.4,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
     >
-      <div>
-        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-        <p
-          className="text-secondary text-[16px] font-semibold"
-          style={{ margin: 0 }}
-        >
-          {experience.company_name}
-        </p>
+      <ExperienceCard
+        experience={experience}
+        index={index}
+      />
+    </motion.div>
+  ))}
+</div>
+          
+
+        </div>
       </div>
-
-      <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-white-100 text-[14px] pl-1 tracking-wider"
-          >
-            {point}
-          </li>
-        ))}
-      </ul>
-    </VerticalTimelineElement>
+    </SectionContainer>
   );
-};
-
-const Experience = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className="styles.sectionSubText text-center">
-          What I have done so far
-        </p>
-        <h2 className="sectionHeadText text-center">Work Experience.</h2>
-      </motion.div>
-
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
-    </>
-  );
-};
-
-export default SectionWrapper(Experience, "work");
+}
+export default SectionWrapper(Experience, "experience");

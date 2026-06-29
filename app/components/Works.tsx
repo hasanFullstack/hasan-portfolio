@@ -1,139 +1,103 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { Tilt } from "react-tilt";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "./HigherOrderComponents";
+import { ProjectModal } from "./ProjectModal";
+import BackgroundGlow from "./layout/BackgroundGlow";
 
-type ProjectCardProps = {
-	index: number;
-	name: string;
-	description: string;
-	tags: {
-		name: string;
-		color: string;
-	}[];
-	image: string;
-	source_code_link?: string;
-	deploy_link: string;
-	platform: "Netlify" | "Vercel" | "Figma" | "Wordpress" | "Web"
-};
+const ProjectCard = (props: any) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const ProjectCard = ({
-	index,
-	name,
-	description,
-	tags,
-	image,
-	source_code_link,
-	deploy_link,
-	platform
-}: ProjectCardProps) => {
-	return (
-		<motion.div
-			initial={{ opacity: 0, y: 40 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true, amount: 0.2 }}
-			transition={{ duration: 0.65, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-		>
-			<Tilt
-				options={{
-					max: 45,
-					scale: 1,
-					speed: 450,
-				}}
-				className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
-			>
-				<div className="relative w-full h-[230px]">
-					<Image
-						src={image}
-						width={1000}
-						height={1000}
-						alt="project_image"
-						className="w-full h-full object-cover rounded-2xl"
-					/>
+  return (
+    <>
+     <motion.div
+  onClick={() => setIsModalOpen(true)}
+  animate={{
+    y: [-8, 8, -8],
+    rotate: [-1.2, 1.2, -1.2],
+  }}
+  transition={{
+    duration: 4 + (props.index || 0) * 0.4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  whileHover={{
+    y: -12,
+    scale: 1.02,
+    rotate: 0,
+  }}
+  className="group relative flex flex-col h-full bg-[#0b0b13] border border-white/10 p-6 rounded-3xl cursor-pointer overflow-hidden transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+>
+        {/* Top Section: Image & Stack Icon */}
+        <div className="relative w-full h-[200px] rounded-2xl overflow-hidden mb-5">
+          <Image src={props.image} fill alt={props.name} className="object-cover transition-transform duration-700 group-hover:scale-110" />
+          
+          {/* Tech Stack Icon (Top Right) */}
+          <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-white/10">
+            <Image src={props.platformIcon || "/web.webp"} width={24} height={24} alt="stack" />
+          </div>
+        </div>
 
-					<div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-						{source_code_link && <Link
-							href={source_code_link}
-							target="_blank"
-							className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-						>
-							<Image
-								src="/tech/github.webp"
-								width={24}
-								height={24}
-								alt="source-code"
-								className="object-contain"
-							/>
-						</Link>}
-						<Link
-							href={deploy_link}
-							target="_blank"
-							className="black-gradient w-10 h-10 ml-2 rounded-full flex justify-center items-center cursor-pointer"
-						>
-							<Image
-								src={platform === "Netlify" ? "/tech/netlify.webp" : platform === "Vercel" ? "/tech/vercel.svg" : platform === "Wordpress" ? "/tech/wordpress.webp" : platform === "Web" ? "/web.webp" : "/tech/figma.webp"}
-								width={24}
-								height={24}
-								alt="source code"
-								className="object-contain"
-							/>
-						</Link>
-					</div>
-				</div>
+        {/* Content */}
+        <div className="flex-grow">
+          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+            {props.name}
+          </h3>
+          <p className="text-secondary text-sm leading-relaxed mb-6 line-clamp-3">
+            {props.description}
+          </p>
+        </div>
 
-				<div className="mt-5">
-					<h3 className="text-white font-bold text-[24px]">{name}</h3>
-					<p className="mt-2 text-secondary text-[14px]">{description}</p>
-				</div>
+        {/* Tags (Bottom Left) */}
+        <div className="mt-auto flex flex-wrap gap-2">
+          {props.tags.map((tag: any) => (
+            <span key={tag.name} className={`text-[11px] font-medium px-3 py-1 rounded-full bg-white/5 border border-white/5 text-slate-400`}>
+              #{tag.name}
+            </span>
+          ))}
+        </div>
+      </motion.div>
 
-				<div className="mt-4 flex flex-wrap gap-2">
-					{tags.map((tag) => (
-						<p
-							key={`${name}-${tag.name}`}
-							className={`text-[14px] ${tag.color}`}
-						>
-							#{tag.name}
-						</p>
-					))}
-				</div>
-			</Tilt>
-		</motion.div>
-	);
+      {isModalOpen && <ProjectModal project={props} onClose={() => setIsModalOpen(false)} />}
+    </>
+  );
 };
 
 const Works = () => {
-	return (
-		<>
-			<motion.div variants={textVariant()}>
-				<p className="sectionSubText">My work</p>
-				<h2 className="sectionHeadText">Projects.</h2>
-			</motion.div>
+  return (
+    // Wrap in standard layout logic
+    <div className="mx-auto w-full max-w-7xl">
+      <motion.div variants={textVariant()}>
+        <p className="sectionSubText">My work</p>
+        <h2 className="sectionHeadText">Projects.</h2>
+      </motion.div>
+	  <BackgroundGlow/>
 
-			<div className="w-full flex">
-				<motion.p
-					variants={fadeIn("", "", 0.1, 1)}
-					className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-				>
-					Following projects showcases my skills and experience through
-					real-world examples of my work. Each project is briefly described with
-					links to code repositories and live demos in it. It reflects my
-					ability to solve complex problems, work with different technologies,
-					and manage projects effectively.
-				</motion.p>
-			</div>
-
-			<div className="mt-20 flex flex-wrap gap-7">
-				{projects.map((project, index) => (
-					<ProjectCard key={`project-${index}`} index={index} {...project} />
-				))}
-			</div>
-		</>
-	);
+     <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {projects.map((project, index) => (
+  <ProjectCard
+    key={`project-${index}`}
+    {...project}
+    index={index}
+    platformIcon={
+      project.platform === "Netlify"
+        ? "/tech/netlify.webp"
+        : project.platform === "Vercel"
+        ? "/tech/vercel.svg"
+        : project.platform === "Wordpress"
+        ? "/tech/wordpress.webp"
+        : project.platform === "Figma"
+        ? "/tech/figma.webp"
+        : "/web.webp"
+    }
+  />
+))}
+</div>
+    </div>
+  );
 };
 
 export default SectionWrapper(Works, "projects");
